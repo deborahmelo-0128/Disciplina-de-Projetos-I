@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Divulgação de Serviços Locais</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link>""
+    <style>
+        :root {
+            --primary: #e69a0e;
+            --secondary: #f5f6fa;
+            --accent: #f5c73e;
+            --text: #222;
+            --muted: #666;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--secondary);
+            color: var(--text);
+        }
+        header {
+            background: var(--primary);
+            color: #fff;
+            padding: 16px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.7em;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .menu {
+            display: flex;
+            gap: 24px;
+        }
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .menu a:hover {
+            color: var(--accent);
+        }
+        .login-btn {
+            background: var(--accent);
+            color: #222;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 16px;
+        }
+        .banner {
+            background: linear-gradient(90deg, #80aee2 60%, #f0c954 100%);
+            color: #fff;
+            padding: 48px 0 32px 0;
+            text-align: center;
+        }
+        .banner h1 {
+            font-size: 2.5em;
+            margin-bottom: 12px;
+        }
+        .search-bar {
+            margin: 24px auto 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            max-width: 500px;
+        }
+        .search-bar input, .search-bar select {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            width: 45%;
+        }
+        .search-bar button {
+            background: var(--accent);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        section {
+            margin: 40px 0;
+        }
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .featured-services, .categories, .reviews {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            padding: 20px;
+            flex: 1 1 220px;
+            min-width: 220px;
+            max-width: 300px;
+        }
+        .card img {
+            width: 100%;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+        .categories .card {
+            background: var(--primary);
+            color: #fff;
+            text-align: center;
+        }
+        .reviews .card {
+            background: #f1f3f6;
+            color: var(--text);
+        }
+        .review-stars {
+            color: #fbbc05;
+            font-size: 1.2em;
+        }
+        footer {
+            background: #222;
+            color: #fff;
+            padding: 24px 0;
+            margin-top: 40px;
+        }
+        .footer-links, .footer-social {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 10px;
+        }
+        .footer-links a, .footer-social a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+        .footer-social a {
+            font-size: 1.3em;
+        }
+        /* Página de Pesquisa/Resultados */
+        .search-results {
+            display: flex;
+            gap: 32px;
+        }
+        .filters {
+            min-width: 200px;
+            background: #fff;
+            border-radius: 8px;
+            padding: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            height: fit-content;
+        }
+        .filters label {
+            display: block;
+            margin: 12px 0 4px 0;
+            font-weight: 500;
+        }
+        .results-list {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .provider-card {
+            display: flex;
+            gap: 18px;
+            background: #fff;
+            border-radius: 8px;
+            padding: 16px;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .provider-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        .provider-info {
+            flex: 1;
+        }
+        .provider-info h4 {
+            margin: 0 0 6px 0;
+        }
+        .provider-info p {
+            margin: 0 0 8px 0;
+            color: var(--muted);
+        }
+        .view-profile-btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        /* Responsivo */
+        @media (max-width: 900px) {
+            .featured-services, .categories, .reviews {
+                flex-direction: column;
+            }
+            .search-results {
+                flex-direction: column;
+            }
+            .filters {
+                margin-bottom: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                 <img src="c:\Users\PDBD0086\Desktop\PROJETO DO SITE E APP\Preview.png">
+                <div class="menu">
+                    <a href="#">Home</a>
+                    <a href="#">Serviços</a>
+                    <a href="#">Sobre</a>
+                    <a href="#">Contato</a>
+                    <a href="#">Missão</a>
+                    <a href="#">Visão</a>
+                    <a href="#">Valores</a>
+                    <button class="login-btn">Login/Cadastro</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="banner">
+        <h1>Encontre e agende serviços locais com facilidade</h1>
+        <p>Salões, academias, clínicas, manutenção, jardinagem, limpeza e muito mais!</p>
+        <form class="search-bar">
+            <input type="text" placeholder="Buscar serviço ou profissional">
+            <select>
+                <option value="">Localização</option>
+                <option value="centro">Centro</option>
+                <option value="bairro1">Bairro 1</option>
+                <option value="bairro2">Bairro 2</option>
+            </select>
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+    <main class="container">
+        <section>
+            <div class="section-title">Serviços em destaque</div>
+            <div class="featured-services">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1706629506571-a6d86798916b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHNhbCVDMyVCNWVzJTIwZGUlMjBiZWxlemF8ZW58MHx8MHx8fDA%3D" alt="Espaços de Beleza e Estética">
+                    <h3>Espaço de Beleza Habour</h3>
+                    <p>Cortes, coloração, manicure e mais. Atendimento de qualidade no centro.</p>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWNhZGVtaWF8ZW58MHx8MHx8fDA%3D" alt="Academia">
+                    <h3>Academia FitLife</h3>
+                    <p>Musculação, aulas coletivas e personal trainers. Venha cuidar da sua saúde!</p>
+                </div>
+                <div class="card">
+                    <img src="https://media.istockphoto.com/id/1205805788/pt/foto/gardener-plants-shaping-work.webp?a=1&b=1&s=612x612&w=0&k=20&c=f5KEF3WvmpH1SZ6J-a45B-ZwGfcskr-9X8m2fJh6gco=" alt="Jardinagem">
+                    <h3>Jardins & Cia</h3>
+                    <p>Serviços de jardinagem, paisagismo e manutenção de áreas verdes.</p>
+                </div>
+                <div class="card">
+                    <img src="https://plus.unsplash.com/premium_photo-1661342406124-740ae7a0dd0e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c2VydmklQzMlQTdvcyUyMGRlJTIwbWFudXRlbiVDMyVBNyVDMyVCNWVzfGVufDB8fDB8fHww" alt="Manutenções em Lavadoras de Roupas">
+                    <h4> Eletro Ar Condicionado e Máquinas de Lavar</h4>
+                    <p> Serviços de Manutenção e instalação de Ar Condicionado e Máquinas de Lavar.</p>
+
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="section-title">Categorias populares</div>
+            <div class="categories">
+                <div class="card">Beleza</div>
+                <div class="card">Academias</div>
+                <div class="card">Clínicas</div>
+                <div class="card">Manutenção</div>
+                <div class="card">Jardinagem</div>
+                <div class="card">Limpeza</div>
+            </div>
+        </section>
+        <section>
+            <div class="section-title">Avaliações de clientes</div>
+            <div class="reviews">
+                <div class="card">
+                    <div class="review-stars">★★★★★</div>
+                    <p>"Ótimo atendimento e serviço de qualidade. Recomendo!"</p>
+                    <small>- Ana Paula</small>
+                </div>
+                <div class="card">
+                    <div class="review-stars">★★★★☆</div>
+                    <p>"Fácil de agendar e profissionais muito atenciosos."</p>
+                    <small>- João Silva</small>
+                </div>
+                <div class="card">
+                    <div class="review-stars">★★★★★</div>
+                    <p>"Encontrei o serviço que precisava em poucos minutos."</p>
+                    <small>- Maria Souza</small>
+                </div>
+            </div>
+        </section>
+        <!-- Protótipo de Pesquisa/Resultados -->
+        <section>
+            <div class="section-title">Pesquisa de Prestadores</div>
+            <div class="search-results">
+                <aside class="filters">
+                    <label for="categoria">Categoria</label>
+                    <select id="categoria">
+                        <option>Todos</option>
+                        <option>Beleza</option>
+                        <option>Academias</option>
+                        <option>Clínicas</option>
+                        <option>Manutenção</option>
+                        <option>Jardinagem</option>
+                        <option>Limpeza</option>
+                    </select>
+                    <label for="avaliacao">Avaliação</label>
+                    <select id="avaliacao">
+                        <option>Todas</option>
+                        <option>5 estrelas</option>
+                        <option>4 estrelas ou mais</option>
+                        <option>3 estrelas ou mais</option>
+                    </select>
+                    <label for="distancia">Distância</label>
+                    <select id="distancia">
+                        <option>Todas</option>
+                        <option>Até 2km</option>
+                        <option>Até 5km</option>
+                        <option>Até 10km</option>
+                    </select>
+                </aside>
+                <div class="results-list">
+                    <div class="provider-card">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=80&q=80" alt="Prestador">
+                        <div class="provider-info">
+                            <h4>Maria Cabeleireira</h4>
+                            <div class="review-stars">★★★★★</div>
+                            <p>Especialista em cortes e coloração. Atendimento personalizado.</p>
+                        </div>
+                        <button class="view-profile-btn">Ver Perfil</button>
+                    </div>
+                    <div class="provider-card">
+                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=80&q=80" alt="Prestador">
+                        <div class="provider-info">
+                            <h4> Andrea Personal Trainer</h4>
+                            <div class="review-stars">★★★★☆</div>
+                            <p>Treinos personalizados para todas as idades.</p>
+                        </div>
+                        <button class="view-profile-btn">Ver Perfil</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Protótipo de Perfil do Prestador -->
+        <section>
+            <div class="section-title">Perfil do Prestador</div>
+            <div class="provider-card" style="flex-direction: column; align-items: flex-start;">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80" alt="Prestador" style="width:120px;height:120px;">
+                <h3> Helen Cabeleireira</h3>
+                <p>Especialista em cortes, coloração e penteados. Atendimento com hora marcada.</p>
+                <div>
+                    <strong>Serviços:</strong>
+                    <ul>
+                        <li>Corte feminino - R$ 50</li>
+                        <li>Coloração - R$ 120</li>
+                        <li>Penteado - R$ 80</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong>Agendamentos disponíveis:</strong>
+                    <p>Seg a Sex: 09h - 18h</p>
+                </div>
+                <div>
+                    <strong>Avaliações:</strong>
+                    <div class="review-stars">★★★★★</div>
+                    <p>"Excelente profissional!" - Ana</p>
+                </div>
+                <button class="view-profile-btn">Agendar</button>
+            </div>
+        </section>
+        <!-- Protótipo de Agendamento -->
+        <section>
+            <div class="section-title">Agendamento</div>
+            <form style="background:#fff; padding:20px; border-radius:8px; max-width:400px;">
+                <label for="data">Data:</label>
+                <input type="date" id="data" name="data" required style="width:100%;margin-bottom:12px;">
+                <label for="hora">Horário:</label>
+                <input type="time" id="hora" name="hora" required style="width:100%;margin-bottom:12px;">
+                <label for="servico">Serviço:</label>
+                <select id="servico" name="servico" required style="width:100%;margin-bottom:12px;">
+                    <option>Corte feminino</option>
+                    <option>Coloração</option>
+                    <option>Penteado</option>
+                </select>
+                <button type="submit" class="view-profile-btn" style="width:100%;">Confirmar Agendamento</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Contato</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="Facebook"> </a>
+                <a href="#" title="Instagram"> </a>
+                <a href="#" title="WhatsApp"> </a>
+            </div>
+            <small>&copy; 2025  Vizzo Hub. Todos os direitos reservados.</small>
+        </div>
+    </footer>
+</body>
+</html>
